@@ -9,7 +9,7 @@ public interface ILeaveService {
 
 	public LeaveRequest createLeaveRequest(LeaveRequest leaveRequest);
 	public  List<LeaveRequest> getAllLeaveRequest();
-	
+	public LeaveRequest getLeaveRequestById(Long id);
 	
 	
 }

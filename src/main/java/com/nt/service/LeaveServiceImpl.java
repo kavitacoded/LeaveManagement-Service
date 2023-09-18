@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nt.exception.ResourceNotFoundException;
 import com.nt.model.LeaveRequest;
 import com.nt.repo.LeaveRepository;
 
@@ -23,5 +24,9 @@ public class LeaveServiceImpl  implements ILeaveService{
 	public List<LeaveRequest> getAllLeaveRequest() {
 		return repo.findAll();
 	}
-
+	@Override
+	public LeaveRequest getLeaveRequestById(Long id) {
+		return repo.findById(id)
+			.orElseThrow( () -> new ResourceNotFoundException("Leave Request not Found with id " +id))	;
+	}
 }
